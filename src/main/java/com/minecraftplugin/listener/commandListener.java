@@ -25,7 +25,7 @@ public class commandListener implements CommandExecutor {
                 setWarp setWarp = new setWarp(p, lo, wpName);
                 if (Main.getData().warpExist(wpName)) {
                     setWarp.stWarp();
-                    sender.sendMessage("Succesfully set the warp");
+                    sender.sendMessage(pluginName + "§6 Succesfully set the warp §6");
                 }else {
                     sender.sendMessage("§6Il warp esiste§6");
                 }
