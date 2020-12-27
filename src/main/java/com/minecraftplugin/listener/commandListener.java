@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 
 public class commandListener implements CommandExecutor {
 
+    String pluginName = "§5[EasyWarp]§5";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -20,21 +21,20 @@ public class commandListener implements CommandExecutor {
         String wpName = args[0];
 
         if (sender instanceof Player) {
-            if (command.equals("setwarp")) {
+            if (command.getName().equals("setwarp")) {
                 setWarp setWarp = new setWarp(p, lo, wpName);
                 if (Main.getData().warpExist(wpName)) {
                     setWarp.stWarp();
+                    sender.sendMessage("Succesfully set the warp");
                 }else {
                     sender.sendMessage("§6Il warp esiste§6");
                 }
             }
 
-            if (command.equals("warp")) {
+            if (command.getName().equals("warp")) {
                 warp warp = new warp(p, wpName);
-
-                if (warp.buildlocation()!=null) {
-                    warp.warpYourself();
-                }
+                warp.warpYourself();
+                sender.sendMessage(pluginName + "§6 You warped yourself §6");
             }
         }else {
             System.out.println("§6Non puoi eseguire il comando da console§6");
