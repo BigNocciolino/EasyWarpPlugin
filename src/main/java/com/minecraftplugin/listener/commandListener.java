@@ -41,6 +41,7 @@ public class commandListener implements CommandExecutor {
             if (command.getName().equals("delwarp")) {
                 delWarp delWarp = new delWarp(wpName);
                 delWarp.delwarp();
+                sender.sendMessage(pluginName + "§6 Succesfully deleted the warp §6");
             }
         }else {
             System.out.println("§6Non puoi eseguire il comando da console§6");
