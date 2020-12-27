@@ -38,10 +38,20 @@ public class data {
         this.data.createSection("Warps." + wpName);
         this.data.set("Warps."+wpName+ "." +"Owner", p.getName());
         this.data.set("Warps."+wpName+ "." +"World", lo.getWorld().getName());
-        this.data.set("Warps."+wpName+ "." +"X", lo.getBlockX());
-        this.data.set("Warps."+wpName+ "." +"Y", lo.getBlockY());
-        this.data.set("Warps."+wpName+ "." +"Z", lo.getBlockZ());
+        this.data.set("Warps."+wpName+ "." +"X", lo.getX());
+        this.data.set("Warps."+wpName+ "." +"Y", lo.getY());
+        this.data.set("Warps."+wpName+ "." +"Z", lo.getZ());
         this.data.set("Warps."+wpName+ "." +"Pitch", lo.getPitch());
+
+        try {
+            this.data.save(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delData(String wpName) {
+        this.data.set("Warps."+wpName, null);
 
         try {
             this.data.save(file);
@@ -61,13 +71,13 @@ public class data {
     }
 
     //Return the x location
-    public int returnWarpX(String wpName) {
-        return (int) this.data.get("Warps."+wpName+".X");
+    public double returnWarpX(String wpName) {
+        return (double) this.data.get("Warps."+wpName+".X");
     }
 
     //Return the Y value
-    public int returnwarpY(String warpName){
-        return (int) this.data.get("Warps."+warpName+".Y");
+    public double returnwarpY(String warpName){
+        return (double) this.data.get("Warps."+warpName+".Y");
     }
 
     //retunr the owner of this warp, only the owner can change the warpData
@@ -76,8 +86,8 @@ public class data {
     }
 
     //return the pitch
-    public int returnPitch(String warpName) {
-        return (int) this.data.get("Warps."+warpName+".Pitch");
+    public double returnPitch(String warpName) {
+        return (double) this.data.get("Warps."+warpName+".Pitch");
     }
 
     //Retunr the world
@@ -86,8 +96,8 @@ public class data {
     }
 
     //return the z
-    public int returnWarpZ(String warpname) {
-        return (int) this.data.get("Warps."+warpname+".Z");
+    public double returnWarpZ(String warpname) {
+        return (double) this.data.get("Warps."+warpname+".Z");
     }
 
     //Method for return all warep in the yaml file for the tabCompleter

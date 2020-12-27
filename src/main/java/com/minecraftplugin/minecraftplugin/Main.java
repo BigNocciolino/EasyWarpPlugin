@@ -19,6 +19,8 @@ public final class Main extends JavaPlugin {
         this.getCommand("setwarp").setExecutor(new commandListener());
         this.getCommand("warp").setExecutor(new commandListener());
         this.getCommand("warp").setTabCompleter(new Tabcompleter());
+        this.getCommand("delwarp").setExecutor(new commandListener());
+        this.getCommand("delwarp").setTabCompleter(new Tabcompleter());
         data = new data();
     }
 

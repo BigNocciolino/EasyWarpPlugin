@@ -1,5 +1,6 @@
 package com.minecraftplugin.listener;
 
+import com.minecraftplugin.listener.commands.delWarp;
 import com.minecraftplugin.listener.commands.setWarp;
 import com.minecraftplugin.listener.commands.warp;
 import com.minecraftplugin.minecraftplugin.Main;
@@ -35,6 +36,11 @@ public class commandListener implements CommandExecutor {
                 warp warp = new warp(p, wpName);
                 warp.warpYourself();
                 sender.sendMessage(pluginName + "§6 You warped yourself §6");
+            }
+
+            if (command.getName().equals("delwarp")) {
+                delWarp delWarp = new delWarp(wpName);
+                delWarp.delwarp();
             }
         }else {
             System.out.println("§6Non puoi eseguire il comando da console§6");
