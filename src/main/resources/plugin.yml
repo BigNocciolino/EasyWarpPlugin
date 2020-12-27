@@ -6,3 +6,10 @@ prefix: EasyWarp
 loadbefore: [ EasyWarp ]
 authors: [ AlfonsoSorrentino ]
 description: You can teleport yourself to location with warp
+commands:
+  warp:
+    aliases:
+      - ww
+  setwarp:
+    aliases:
+      - stw
