@@ -19,7 +19,7 @@ public class data {
     public data() {
         if (!file.exists()) {
             try {
-                dir.mkdir();
+                dir.mkdirs();
                 file.createNewFile();
                 this.data = YamlConfiguration.loadConfiguration(file);
                 this.data.createSection("Warps");

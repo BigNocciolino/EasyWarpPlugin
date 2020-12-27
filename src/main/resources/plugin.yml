@@ -3,7 +3,6 @@ version: ${project.version}
 main: com.minecraftplugin.minecraftplugin.Main
 api-version: 1.16
 prefix: EasyWarp
-loadbefore: [ EasyWarp ]
 authors: [ AlfonsoSorrentino ]
 description: You can teleport yourself to location with warp
 commands:
