@@ -1,5 +1,6 @@
 package com.minecraftplugin.minecraftplugin;
 
+import com.minecraftplugin.Completer.Tabcompleter;
 import com.minecraftplugin.data.data;
 import com.minecraftplugin.listener.commandListener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,6 +18,7 @@ public final class Main extends JavaPlugin {
         System.out.println("The pllugin was started successfully");
         this.getCommand("setwarp").setExecutor(new commandListener());
         this.getCommand("warp").setExecutor(new commandListener());
+        this.getCommand("warp").setTabCompleter(new Tabcompleter());
         data = new data();
     }
 
