@@ -15,12 +15,14 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
+        //All commands
         System.out.println("The pllugin was started successfully");
         this.getCommand("setwarp").setExecutor(new commandListener());
         this.getCommand("warp").setExecutor(new commandListener());
         this.getCommand("warp").setTabCompleter(new Tabcompleter());
         this.getCommand("delwarp").setExecutor(new commandListener());
         this.getCommand("delwarp").setTabCompleter(new Tabcompleter());
+        this.getCommand("warps").setExecutor(new commandListener());
         data = new data();
     }
 
