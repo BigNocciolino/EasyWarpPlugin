@@ -10,13 +10,14 @@ public final class Main extends JavaPlugin {
 
     public static Main plugin;
     public static data data;
+    private final String pluginName = "[EasyWarp]";
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
         //All commands
-        System.out.println("The pllugin was started successfully");
+        System.out.println( pluginName + "The plugin was started successfully");
         this.getCommand("setwarp").setExecutor(new commandListener());
         this.getCommand("warp").setExecutor(new commandListener());
         this.getCommand("warp").setTabCompleter(new Tabcompleter());
@@ -29,7 +30,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        System.out.println("The pllugin was stopped successfully");
+        System.out.println( pluginName + "The plugin was stopped successfully");
     }
 
     public static data getData() {
