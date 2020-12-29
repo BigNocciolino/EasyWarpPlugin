@@ -12,14 +12,13 @@ import java.util.Set;
 
 public class data {
 
-    public static final File dir = new File(Main.getInstance().getDataFolder() + "/EasyWarp");//Cartella del file
-    public static final File file = new File(dir + "data.yml"); //Folder del file dove sono instanziati tutti i plugin
+    public static final File file = new File(Main.getInstance().getDataFolder() + "/data.yml" );
     private FileConfiguration data;
 
     public data() {
+
         if (!file.exists()) {
             try {
-                dir.mkdirs();
                 file.createNewFile();
                 this.data = YamlConfiguration.loadConfiguration(file);
                 this.data.createSection("Warps");
