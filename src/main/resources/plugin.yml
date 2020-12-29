@@ -6,6 +6,7 @@ prefix: EasyWarp
 authors: [ AlfonsoSorrentino ]
 description: You can teleport yourself to location with warp
 commands:
+  warps:
   delwarp:
     aliases:
       - dw
