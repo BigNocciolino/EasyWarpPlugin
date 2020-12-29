@@ -1,0 +1,7 @@
+#Config file for all commands and possibilities
+
+#By default is set tu true
+#if is set to true only the owner of the warp can delete itself.
+#if is set to false everyone can delete a warp.
+deletewarp:
+  onlyOwner: true
