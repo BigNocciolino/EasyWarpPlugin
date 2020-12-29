@@ -8,7 +8,9 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 
 **/setwarp:** Performing this command you can set the warp with your courrent location and with the name you want. 
 
-**/delwarp** Use this command to delete a warp
+**/delwarp:** Use this command to delete a warp
+
+**/warps:** Use this command to show the list of all warp
 
 **Aliases:**
 
