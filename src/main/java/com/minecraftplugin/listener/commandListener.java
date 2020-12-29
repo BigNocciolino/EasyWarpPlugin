@@ -15,7 +15,7 @@ import java.util.List;
 
 public class commandListener implements CommandExecutor {
 
-    String pluginName = "§5[EasyWarp]§5";
+    private final String pluginName = "§5[EasyWarp]§5";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -24,6 +24,8 @@ public class commandListener implements CommandExecutor {
         Location lo = p.getLocation();
 
         if (sender instanceof Player) {
+
+            //Command to set a warp
             if (command.getName().equals("setwarp")) {
                 if (args.length >= 1) {
                     String wpName = args[0];
@@ -39,6 +41,7 @@ public class commandListener implements CommandExecutor {
                 }
             }
 
+            //Command for warp
             if (command.getName().equals("warp")) {
                 if (args.length >= 1) {
                     String wpName = args[0];
@@ -54,17 +57,31 @@ public class commandListener implements CommandExecutor {
                 }
             }
 
+            //Command for delete a warp
             if (command.getName().equals("delwarp")) {
                 if (args.length >= 1) {
                     String wpName = args[0];
                     delWarp delWarp = new delWarp(wpName);
-                    delWarp.delwarp();
-                    sender.sendMessage(pluginName + "§6 Succesfully deleted the warp §6");
+
+                    //If in the config file the onlyOwner section is set to true, only the owner of the warp can delete it
+                    //Only the owner of this warp can delete it
+                    if (Boolean.parseBoolean(Main.getInstance().getConfig().getString("deletewarp.onlyOwner")) == true) {
+                        if (p.getName().equals(Main.getData().returnOwner(wpName)) || p.isOp()) {
+                            delWarp.delwarp();
+                            sender.sendMessage(pluginName + "§6 Succesfully deleted the warp §6");
+                        }
+                        //Else everyone can delete it
+                    }else {
+                        delWarp.delwarp();
+                        sender.sendMessage(pluginName + "§6 Succesfully deleted the warp §6");
+                    }
+
                 }else {
                     sender.sendMessage(pluginName + "§6 The argument must be present");
                 }
             }
 
+            //Command for warp list
             if (command.getName().equals("warps")) {
                 warplist warplist = new warplist();
                 List<String> warps = warplist.returnWarpList();
@@ -77,6 +94,8 @@ public class commandListener implements CommandExecutor {
                     sender.sendMessage(pluginName + "§6 There is no warp in the list§6");
                 }
             }
+
+            return true;
 
         }else {
             System.out.println("Non puoi eseguire il comando da console");
