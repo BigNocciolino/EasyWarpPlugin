@@ -26,9 +26,7 @@ public class warp {
     }
 
     public void warpYourself() {
-        if (buildlocation()!=null) {
             p.teleport(buildlocation());
-        }
     }
 
 }
