@@ -63,19 +63,22 @@ public class commandListener implements CommandExecutor {
                     String wpName = args[0];
                     delWarp delWarp = new delWarp(wpName);
 
-                    //If in the config file the onlyOwner section is set to true, only the owner of the warp can delete it
-                    //Only the owner of this warp can delete it
-                    if (Boolean.parseBoolean(Main.getInstance().getConfig().getString("deletewarp.onlyOwner")) == true) {
-                        if (p.getName().equals(Main.getData().returnOwner(wpName)) || p.isOp()) {
+                    if (Main.getData().warpExist(wpName)!=true) {
+                        //If in the config file the onlyOwner section is set to true, only the owner of the warp can delete it
+                        //Only the owner of this warp can delete it
+                        if (Boolean.parseBoolean(Main.getInstance().getConfig().getString("deletewarp.onlyOwner")) == true) {
+                            if (p.getName().equals(Main.getData().returnOwner(wpName)) || p.isOp()) {
+                                delWarp.delwarp();
+                                sender.sendMessage(pluginName + "§6 Succesfully deleted the warp §6");
+                            }
+                            //Else everyone can delete it
+                        } else {
                             delWarp.delwarp();
                             sender.sendMessage(pluginName + "§6 Succesfully deleted the warp §6");
                         }
-                        //Else everyone can delete it
                     }else {
-                        delWarp.delwarp();
-                        sender.sendMessage(pluginName + "§6 Succesfully deleted the warp §6");
+                        sender.sendMessage(pluginName + " §6There is no warp with this name");
                     }
-
                 }else {
                     sender.sendMessage(pluginName + "§6 The argument must be present");
                 }
