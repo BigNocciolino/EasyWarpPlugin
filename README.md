@@ -20,6 +20,13 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 
 /setwarp | /stw
 
+## New update
+
+- Added the config file, (read him before deply this plugin in your server), you cn change some  features.
+
+- Resolved some bugs and added new messages
+
+- **If you have installed a old version of this plugin, before installing the new version(1.1.1) delete the folder created before.**
 ## Installation
 Install the ultimate release and put in your plugin folder in your minecraft server
 and it will create all folders and files.
