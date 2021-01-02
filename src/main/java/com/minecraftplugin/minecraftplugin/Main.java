@@ -2,7 +2,9 @@ package com.minecraftplugin.minecraftplugin;
 
 import com.minecraftplugin.Completer.Tabcompleter;
 import com.minecraftplugin.data.data;
+import com.minecraftplugin.data.manageMessagesYaml;
 import com.minecraftplugin.listener.commandListener;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -25,6 +27,7 @@ public final class Main extends JavaPlugin {
         this.getCommand("delwarp").setTabCompleter(new Tabcompleter());
         this.getCommand("warps").setExecutor(new commandListener());
         saveDefaultConfig();
+        new manageMessagesYaml();
         data = new data();
     }
 
@@ -32,6 +35,11 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         System.out.println( pluginName + "The plugin was stopped successfully");
+    }
+
+    public static FileConfiguration getmessagies() {
+        manageMessagesYaml manageMessagesYaml = new manageMessagesYaml();
+        return manageMessagesYaml.getFile();
     }
 
     public static data getData() {

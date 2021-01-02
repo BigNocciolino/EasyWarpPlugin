@@ -43,6 +43,6 @@ First I would like to add the ability to change the warp name.
 The ability to make a warp request to a player or to a player's private warp.
 
 
-- [ ] Messages.yml
+- [x] Messages.yml
 - [ ] Change warp name
 - [ ] Warp request

@@ -4,7 +4,7 @@ import com.minecraftplugin.listener.commands.delWarp;
 import com.minecraftplugin.listener.commands.setWarp;
 import com.minecraftplugin.listener.commands.warp;
 import com.minecraftplugin.listener.commands.warplist;
-import com.minecraftplugin.minecraftplugin.Main;
+import com.minecraftplugin.minecraftplugin.Main;import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,12 +32,12 @@ public class commandListener implements CommandExecutor {
                     setWarp setWarp = new setWarp(p, lo, wpName);
                     if (Main.getData().warpExist(wpName)) {
                         setWarp.stWarp();
-                        sender.sendMessage(pluginName + "§6 Succesfully set the warp §6");
+                        sender.sendMessage(pluginName + "§6 " +  Main.getmessagies().getString("SetWarpMessagies.SuccesfullySet"));
                     } else {
-                        sender.sendMessage(pluginName + "§6 The warp already exists");
+                        sender.sendMessage(pluginName + "§6 " + Main.getmessagies().getString("SetWarpMessagies.AlredyExist"));
                     }
                 }else {
-                    sender.sendMessage(pluginName + "§6 The argument must be present§6");
+                    sender.sendMessage(pluginName + "§6 " + Main.getmessagies().getString("SetWarpMessagies.Arg"));
                 }
             }
 
@@ -48,12 +48,12 @@ public class commandListener implements CommandExecutor {
                     warp warp = new warp(p, wpName);
                     if (Main.getData().warpExist(wpName)!=true) {
                         warp.warpYourself();
-                        sender.sendMessage(pluginName + "§6 You warped yourself §6");
+                        sender.sendMessage(pluginName + "§6 " + Main.getmessagies().getString("WarpMessagies.SyccesfullyWarped"));
                     }else{
-                        sender.sendMessage(pluginName + "§6 There is no warp with this name");
+                        sender.sendMessage(pluginName + "§6 " + Main.getmessagies().getString("WarpMessagies.NoWarp"));
                     }
                 }else {
-                    sender.sendMessage(pluginName + "§6 The argument must be present");
+                    sender.sendMessage(pluginName + "§6 " + Main.getmessagies().getString("WarpMessagies.Arg"));
                 }
             }
 
@@ -69,18 +69,20 @@ public class commandListener implements CommandExecutor {
                         if (Boolean.parseBoolean(Main.getInstance().getConfig().getString("deletewarp.onlyOwner")) == true) {
                             if (p.getName().equals(Main.getData().returnOwner(wpName)) || p.isOp()) {
                                 delWarp.delwarp();
-                                sender.sendMessage(pluginName + "§6 Succesfully deleted the warp §6");
+                                sender.sendMessage(pluginName + "§6 " + Main.getmessagies().getString("DeleteWarp.SuccesfulluDeleted"));
+                            }else {
+                                sender.sendMessage(pluginName + " §6 " + Main.getmessagies().getString("DeleteWarp.NotOwner"));
                             }
                             //Else everyone can delete it
                         } else {
                             delWarp.delwarp();
-                            sender.sendMessage(pluginName + "§6 Succesfully deleted the warp §6");
+                            sender.sendMessage(pluginName + "§6 " + Main.getmessagies().getString("DeleteWarp.SuccesfulluDeleted"));
                         }
                     }else {
-                        sender.sendMessage(pluginName + " §6There is no warp with this name");
+                        sender.sendMessage(pluginName + " §6 " + Main.getmessagies().getString("DeleteWarp.NoWarp"));
                     }
                 }else {
-                    sender.sendMessage(pluginName + "§6 The argument must be present");
+                    sender.sendMessage(pluginName + "§6 " + Main.getmessagies().getString("DeleteWarp.Arg"));
                 }
             }
 
@@ -94,14 +96,14 @@ public class commandListener implements CommandExecutor {
                         sender.sendMessage(pluginName + " §6Name: " + "§b" + x + " §6Owner: §b" + Main.getData().returnOwner(x));
                     }
                 }else {
-                    sender.sendMessage(pluginName + "§6 There is no warp in the list§6");
+                    sender.sendMessage(pluginName + "§6 " + Main.getmessagies().getString("warps.NoWarpInList"));
                 }
             }
 
             return true;
 
         }else {
-            System.out.println("Non puoi eseguire il comando da console");
+            System.out.println("You cannot perform this command here");
         }
 
         return false;
