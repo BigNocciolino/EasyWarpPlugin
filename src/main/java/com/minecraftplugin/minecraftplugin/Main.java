@@ -19,7 +19,7 @@ public final class Main extends JavaPlugin {
         // Plugin startup logic
         plugin = this;
         //All commands
-        System.out.println( pluginName + "The plugin was started successfully");
+        System.out.println( pluginName + " The plugin was started successfully");
         this.getCommand("setwarp").setExecutor(new commandListener());
         this.getCommand("warp").setExecutor(new commandListener());
         this.getCommand("warp").setTabCompleter(new Tabcompleter());
