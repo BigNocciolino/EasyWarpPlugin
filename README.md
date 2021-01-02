@@ -39,10 +39,8 @@ I would to maintain this project i don't know for how long.
 
 I'working for add a custom yaml file to manage all the messagies.
 
-First I would like to add the ability to change the warp name.
 The ability to make a warp request to a player or to a player's private warp.
 
 
 - [x] Messages.yml
-- [ ] Change warp name
 - [ ] Warp request
