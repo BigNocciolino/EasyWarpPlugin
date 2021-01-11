@@ -5,3 +5,9 @@
 #if is set to false everyone can delete a warp.
 deletewarp:
   onlyOwner: true
+
+#Change this value and modify the time the warp will be eliminated
+warpRequestTimeout: 120
+
+#Changhe this vaue to modify the max request that a player can recive
+maxWarpRequest: 5
