@@ -10,12 +10,16 @@ public class warp {
 
     private Player p;
     private String warpName;
+    Player recivier;
 
     public warp(Player p,  String warpName) {
         this.p = p;
         this.warpName = warpName;
     }
 
+
+
+    //Build the location for the static warp
     public Location buildlocation() {
 
         World w = Bukkit.getWorld(Main.getData().returnWorld(warpName));
@@ -25,6 +29,7 @@ public class warp {
         return loc;
     }
 
+    //warp to static warp
     public void warpYourself() {
             p.teleport(buildlocation());
     }
