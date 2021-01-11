@@ -48,6 +48,12 @@ public class manageMessagesYaml {
         this.conf.set("DeleteWarp." + "NotOwner", "There is no warp with this name");
         this.conf.set("DeleteWarp." + "Arg", "The argument must be present");
 
+        this.conf.createSection("wprRequests");
+        this.conf.set("wprRequests." + "wprSended", "Warp request sent to ");
+        this.conf.set("wprRequests." + "TooManyWprRequest", "Has too many warpRequest ");
+        this.conf.set("wprRequests." + "AlredySent", "You have alredy sent a warpRequest to this player ");
+        this.conf.set("wprRequests." + "Recivierwprrequests", "Recivied a teleportation request from ");
+
         this.conf.createSection("warps");
         this.conf.set("warps." + "NoWarpInList", "There is no warp in the list");
     }
