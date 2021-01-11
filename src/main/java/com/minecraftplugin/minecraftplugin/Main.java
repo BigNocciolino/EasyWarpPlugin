@@ -1,11 +1,14 @@
 package com.minecraftplugin.minecraftplugin;
 
 import com.minecraftplugin.Completer.Tabcompleter;
+import com.minecraftplugin.Executors.*;
 import com.minecraftplugin.data.data;
 import com.minecraftplugin.data.manageMessagesYaml;
-import com.minecraftplugin.listener.commandListener;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public final class Main extends JavaPlugin {
@@ -13,6 +16,9 @@ public final class Main extends JavaPlugin {
     public static Main plugin;
     public static data data;
     private final String pluginName = "[EasyWarp]";
+    static final Logger log = Logger.getLogger("Minecraft");
+    public static final String PLUGIN_NAME = "Easywarp";
+    public static final String LOG_HEADER = "[" + PLUGIN_NAME + "]";
 
     @Override
     public void onEnable() {
@@ -20,12 +26,17 @@ public final class Main extends JavaPlugin {
         plugin = this;
         //All commands
         System.out.println( pluginName + " The plugin was started successfully");
-        this.getCommand("setwarp").setExecutor(new commandListener());
-        this.getCommand("warp").setExecutor(new commandListener());
+        this.getCommand("setwarp").setExecutor(new setWarpExc());
+        this.getCommand("warp").setExecutor(new WarpExc());
         this.getCommand("warp").setTabCompleter(new Tabcompleter());
-        this.getCommand("delwarp").setExecutor(new commandListener());
+        this.getCommand("delwarp").setExecutor(new delWarpExc());
         this.getCommand("delwarp").setTabCompleter(new Tabcompleter());
-        this.getCommand("warps").setExecutor(new commandListener());
+        this.getCommand("warps").setExecutor(new WarpsExc());
+        this.getCommand("warpto").setExecutor(new WarpTo());
+        this.getCommand("wprequest").setExecutor(new Warprequest());
+        this.getCommand("wpraccept").setExecutor(new Warprequest());
+        this.getCommand("wprdeny").setExecutor(new Warprequest());
+        this.getCommand("wprlist").setExecutor(new warprequestsList());
         saveDefaultConfig();
         new manageMessagesYaml();
         data = new data();
@@ -48,5 +59,13 @@ public final class Main extends JavaPlugin {
 
     public static Main getInstance() {
         return plugin;
+    }
+
+    public void logInfo(String _message) {
+        log.log(Level.SEVERE, String.format("%s %s", LOG_HEADER, _message));
+    }
+
+    public void logError(String _message) {
+        log.log(Level.SEVERE, String.format("%s %s", LOG_HEADER, _message));
     }
 }
