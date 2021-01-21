@@ -12,13 +12,7 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 
 **/warps:** Use this command to show the list of all warp
 
-**/wprrequest:** Use this command to send a warp request to you
-
-**/wpraccept:** Accept all or single warprequest
-
-**/wprdeny:** Decline all of single warprequest
-
-**/wprlist** Show a list of wprrequest 
+**warpto** Use this command to warp yourself to another player
 
 **Aliases:**
 
@@ -28,11 +22,7 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 
 /setwarp | /stw
 
-/wprrequest | /wpr
-
-/wpraccept | /wpra
-
-/wprdeny | /wprd
+/warpto | /wp
 
 ## New update
 
@@ -43,8 +33,6 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 ## Permissions
 
 - warp.warp | This perms enable player to warp yourself, set the warp and delete the warp
-
-- warp.request | This perms enable to send a warp request
 
 - warp.warpto | Enable the player to warp to other player
 

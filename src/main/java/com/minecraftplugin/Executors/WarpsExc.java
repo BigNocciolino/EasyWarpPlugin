@@ -33,6 +33,12 @@ public class WarpsExc implements CommandExecutor {
                 }
             }
 
+            if (sender.hasPermission("warp.warp")) {
+                if (args[0].equals("gui")) {
+                    warpGui warpGui = new warpGui();
+                }
+            }
+
             return true;
         }
 

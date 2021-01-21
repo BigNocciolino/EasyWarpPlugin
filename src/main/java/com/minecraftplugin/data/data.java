@@ -64,11 +64,6 @@ public class data {
         return this.data.getString("Warps."+wpName)==null;
     }
 
-    //Retunrn the warp name
-    public String returnWarpName(String wpName) {
-        return (String) this.data.getString("Warps."+wpName);
-    }
-
     //Return the x location
     public double returnWarpX(String wpName) {
         return (double) this.data.get("Warps."+wpName+".X");
@@ -84,11 +79,6 @@ public class data {
         return (String) this.data.get("Warps."+warpName+".Owner").toString();
     }
 
-    //return the pitch
-    public double returnPitch(String warpName) {
-        return (double) this.data.get("Warps."+warpName+".Pitch");
-    }
-
     //Retunr the world
     public String returnWorld(String warpName) {
         return (String) this.data.get("Warps."+warpName+".World");
@@ -99,7 +89,7 @@ public class data {
         return (double) this.data.get("Warps."+warpname+".Z");
     }
 
-    //Method for return all warep in the yaml file for the tabCompleter
+    //Method for return all warp in the yaml file for the tabCompleter
     public Set<String> retunrallSet() {
         Set<String> set;
         set = this.data.getConfigurationSection("Warps").getKeys(false);
