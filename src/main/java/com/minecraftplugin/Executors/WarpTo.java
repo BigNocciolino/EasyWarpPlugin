@@ -20,12 +20,17 @@ public class WarpTo implements CommandExecutor {
             if (p.hasPermission("warp.warpto")) {
                 if (args.length >= 1) {
                     Player recivier = Bukkit.getServer().getPlayer(args[0]);
-                    if (recivier.getUniqueId().equals(p.getUniqueId())) {
-                        sender.sendMessage(pluginName + ChatColor.RED + " You cant warp yourself yo you");
+                    if (recivier != null) {
+                        if (recivier.getUniqueId().equals(p.getUniqueId())) {
+                            sender.sendMessage(pluginName + ChatColor.RED + " You cant warp yourself yo you");
+                        } else {
+                            warpTo warpTo = new warpTo(p, recivier);
+                            warpTo.warpTo();
+                            sender.sendMessage(pluginName + ChatColor.GOLD + " You succesfully warped to " + recivier.getName());
+                            recivier.sendMessage(pluginName + ChatColor.AQUA + sender.getName() + ChatColor.GOLD + " warped to you");
+                        }
                     }else {
-                        warpTo warpTo = new warpTo(p, recivier);
-                        warpTo.warpTo();
-                        sender.sendMessage(pluginName + ChatColor.GOLD + " You succesfully warped to " + recivier.getName());
+                        sender.sendMessage(pluginName + ChatColor.GOLD + " This player is offline");
                     }
                 }else {
                     sender.sendMessage( pluginName + ChatColor.RED + " The argument musb be present");

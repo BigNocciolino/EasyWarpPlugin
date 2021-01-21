@@ -1,5 +1,6 @@
 package com.minecraftplugin.Executors;
 
+import com.minecraftplugin.GUI.warpGui;
 import com.minecraftplugin.listener.commands.warplist;
 import com.minecraftplugin.minecraftplugin.Main;
 import org.bukkit.command.Command;
@@ -22,7 +23,7 @@ public class WarpsExc implements CommandExecutor {
             if (p.hasPermission("warp.warp")) {
                 warplist warplist = new warplist();
                 List<String> warps = warplist.returnWarpList();
-
+                warpGui wp = new warpGui();
                 if (warplist.returnWarpList() != null) {
                     for (String x : warps) {
                         sender.sendMessage(pluginName + " §6Name: " + "§b" + x + " §6Owner: §b" + Main.getData().returnOwner(x));

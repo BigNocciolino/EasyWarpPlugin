@@ -6,20 +6,6 @@ prefix: EasyWarp
 authors: [ AlfonsoSorrentino ]
 description: You can teleport yourself to location with warp
 commands:
-  wprlist:
-    description: Use this commad to show a list of pending request
-  wprdeny:
-    description: use this command to delete one or all requests
-    aliases:
-      - wprd
-  wpraccept:
-    description: Use this command to acceppt one or all requests
-    aliases:
-      - wpra
-  wprequest:
-    description: use this command to send a warpRequest to a player to you
-    aliases:
-      - wpr
   warpto:
     description: use this command to warp to a player
     aliases:

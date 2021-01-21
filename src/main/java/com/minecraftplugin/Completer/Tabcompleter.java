@@ -2,7 +2,6 @@ package com.minecraftplugin.Completer;
 
 import com.minecraftplugin.minecraftplugin.Main;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 

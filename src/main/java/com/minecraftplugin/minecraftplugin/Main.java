@@ -2,6 +2,7 @@ package com.minecraftplugin.minecraftplugin;
 
 import com.minecraftplugin.Completer.Tabcompleter;
 import com.minecraftplugin.Executors.*;
+import com.minecraftplugin.GUI.warpGui;
 import com.minecraftplugin.data.data;
 import com.minecraftplugin.data.manageMessagesYaml;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -33,10 +34,7 @@ public final class Main extends JavaPlugin {
         this.getCommand("delwarp").setTabCompleter(new Tabcompleter());
         this.getCommand("warps").setExecutor(new WarpsExc());
         this.getCommand("warpto").setExecutor(new WarpTo());
-        this.getCommand("wprequest").setExecutor(new Warprequest());
-        this.getCommand("wpraccept").setExecutor(new Warprequest());
-        this.getCommand("wprdeny").setExecutor(new Warprequest());
-        this.getCommand("wprlist").setExecutor(new warprequestsList());
+        this.getServer().getPluginManager().registerEvents(new warpGui(), plugin);
         saveDefaultConfig();
         new manageMessagesYaml();
         data = new data();
