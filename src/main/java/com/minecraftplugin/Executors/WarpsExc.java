@@ -1,6 +1,5 @@
 package com.minecraftplugin.Executors;
 
-import com.minecraftplugin.GUI.warpGui;
 import com.minecraftplugin.listener.commands.warplist;
 import com.minecraftplugin.minecraftplugin.Main;
 import org.bukkit.command.Command;
@@ -20,28 +19,35 @@ public class WarpsExc implements CommandExecutor {
         if (sender instanceof Player) {
             Player p = (Player) sender;
             //Command for warp list
-            if (p.hasPermission("warp.warp")) {
-                warplist warplist = new warplist();
-                List<String> warps = warplist.returnWarpList();
-                warpGui wp = new warpGui();
-                if (warplist.returnWarpList() != null) {
-                    for (String x : warps) {
-                        sender.sendMessage(pluginName + " §6Name: " + "§b" + x + " §6Owner: §b" + Main.getData().returnOwner(x));
-                    }
-                } else {
-                    sender.sendMessage(pluginName + "§6 " + Main.getmessagies().getString("warps.NoWarpInList"));
+            if (Boolean.parseBoolean(Main.getInstance().getConfig().getString("usePermission")) == true) {
+                if (p.hasPermission("warp.warp")) {
+                    warpList(p);
+                }else {
+                    p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warps.permission").replaceAll("&", "§"));
+                }
+            } else {
+                if (command.getName().equals("warps")) {
+                    warpList(p);
                 }
             }
-
-            if (sender.hasPermission("warp.warp")) {
-                if (args[0].equals("gui")) {
-                    warpGui warpGui = new warpGui();
-                }
-            }
-
             return true;
         }
-
         return false;
     }
+
+    public void warpList(Player p) {
+        warplist warplist = new warplist();
+        List<String> warps = warplist.returnWarpList();
+        if (warplist.returnWarpList() != null) {
+            for (String x : warps) {
+                p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warps.warpList")
+                        .replaceAll("\\{warps}", x).replaceAll("\\{OwnerName}", Main.getData().returnOwner(x)).replaceAll("&", "§"));
+            }
+        } else {
+            p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warps.noWaroInList").replaceAll("&", "§"));
+        }
+    }
+
+
 }
+

@@ -7,7 +7,7 @@ authors: [ AlfonsoSorrentino ]
 description: You can teleport yourself to location with warp
 commands:
   warpto:
-    description: use this command to warp to a player
+    description: Use this command to warp to a player
     aliases:
       - wp
   warps:
@@ -17,10 +17,10 @@ commands:
     aliases:
       - dw
   warp:
-    description: use this command to warp
+    description: Use this command to warp
     aliases:
       - ww
   setwarp:
-    description: use this command to set a warp
+    description: Use this command to set a warp
     aliases:
       - stw

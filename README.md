@@ -36,6 +36,9 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 
 - warp.warpto | Enable the player to warp to other player
 
+# General
+
+
 ## Installation
 Install the ultimate release and put in your plugin folder in your minecraft server
 and it will create all folders and files.

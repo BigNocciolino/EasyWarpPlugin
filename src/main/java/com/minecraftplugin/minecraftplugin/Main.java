@@ -2,13 +2,9 @@ package com.minecraftplugin.minecraftplugin;
 
 import com.minecraftplugin.Completer.Tabcompleter;
 import com.minecraftplugin.Executors.*;
-import com.minecraftplugin.GUI.warpGui;
 import com.minecraftplugin.data.data;
-import com.minecraftplugin.data.manageMessagesYaml;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -16,7 +12,7 @@ public final class Main extends JavaPlugin {
 
     public static Main plugin;
     public static data data;
-    private final String pluginName = "[EasyWarp]";
+    private final String pluginName = this.getConfig().getString("messagiesPrefix").replaceAll("&", " ");
     static final Logger log = Logger.getLogger("Minecraft");
     public static final String PLUGIN_NAME = "Easywarp";
     public static final String LOG_HEADER = "[" + PLUGIN_NAME + "]";
@@ -34,9 +30,7 @@ public final class Main extends JavaPlugin {
         this.getCommand("delwarp").setTabCompleter(new Tabcompleter());
         this.getCommand("warps").setExecutor(new WarpsExc());
         this.getCommand("warpto").setExecutor(new WarpTo());
-        this.getServer().getPluginManager().registerEvents(new warpGui(), plugin);
-        saveDefaultConfig();
-        new manageMessagesYaml();
+        this.saveDefaultConfig();
         data = new data();
     }
 
@@ -44,11 +38,6 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         System.out.println( pluginName + " The plugin was stopped successfully");
-    }
-
-    public static FileConfiguration getmessagies() {
-        manageMessagesYaml manageMessagesYaml = new manageMessagesYaml();
-        return manageMessagesYaml.getFile();
     }
 
     public static data getData() {
@@ -59,11 +48,4 @@ public final class Main extends JavaPlugin {
         return plugin;
     }
 
-    public void logInfo(String _message) {
-        log.log(Level.SEVERE, String.format("%s %s", LOG_HEADER, _message));
-    }
-
-    public void logError(String _message) {
-        log.log(Level.SEVERE, String.format("%s %s", LOG_HEADER, _message));
-    }
 }
