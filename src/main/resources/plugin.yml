@@ -7,7 +7,7 @@ authors: [ AlfonsoSorrentino ]
 description: You can teleport yourself to location with warp
 commands:
   warpto:
-    description: Use this command to warp to a player
+    description: Use this command to send a warp request to a player
     aliases:
       - wp
   warps:
@@ -24,3 +24,19 @@ commands:
     description: Use this command to set a warp
     aliases:
       - stw
+  warpaccept:
+    description: Use this command to accet a warp request pending to you
+    aliases:
+      - wpa
+  warphere:
+    description: Use this command to send a warp request to a player
+    aliases:
+      - wph
+  warplist:
+    description: Use this command to show the poending requests
+    aliases:
+      - wpl
+  warpno:
+    description: Use this comman to decline a warp request
+    aliases:
+      - wpn

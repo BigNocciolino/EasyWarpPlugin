@@ -1,15 +1,22 @@
 #Config file for all commands and possibilities
 #If you have some isessues look at the source code https://github.com/PepegaBruh/EasyWarpPlugin
 
-#By default is set tu true
+#By default is set to true
 #if is set to true only the owner of the warp can delete itself.
 #if is set to false everyone can delete a warp.
 deletewarp:
-  onlyOwner: true
+  onlyOwner: false
 
 #By default is true
 #If you turn off this you can use this plugin without the permissions
-usePermission: true
+usePermission: false
+
+#By default is set to true
+#If you set this to false you disable the request to warp to a player
+sendRequest: true
+#  maxRequest: 5
+
+#By default you can't disable the request from a player to him
 
 #Modify this to change the prefix of the messagies in the chat
 #Dont remove the space at the end of the line, or everything will be written attached
@@ -24,15 +31,15 @@ messagies:
     arg: "%cInsert a warp name"
     permission: "&cYou not have this permission"
 
-  #Change this stirng tho change the messagies when a player set a warp
+  #Change this string tho change the messages when a player set a warp
   setwarp:
-    succesfullySet: "&6Warp succesfully set"
-    alredyExist: "&6This warp alredy exist"
+    succesfullySet: "&6Warp successfully set"
+    alredyExist: "&6This warp already exist"
     arg: "&cInsert a valid warp name"
     permission: "&cYou not have this permission"
 
   delwarp:
-    succesfullyDeleted: "&6Succesfylly deleted the warp"
+    succesfullyDeleted: "&6Successfully deleted the warp"
     permission: "&cYou not have this permission"
     onlyOwner: "&cOnly the owner of this warp can delete it"
     notExixst: "&6There is no warp with this name"
@@ -44,13 +51,21 @@ messagies:
     warpList: "&6Name: &b{warps} &6Owner: &b{OwnerName}"
     noWaroInList: "&cThere is no warp in the list"
 
-  warpto:
+  warpreq:
     permission: "&cYou not have this permission"
-    waroToYou: "&6You cant warp yourself to you"
-    succesfullyWarpedsender: "&6You &6succesfully warped to &b{recivier}"
-    succesfullyWarpedrecivier: "&b{player} &6warped to you"
+    warpToYou: "&6You cant sand a request to you"
+    succesfullyWarpedsender: "&6You have successfully sent a request to {receiver}"
+    succesfullyWarpedrecivier: "&6You have received a request from {sender}"
     offline: "&6This player is offline"
     arg: "&cInsert a player name"
+
+  acceptWarp:
+    acceptedSender: "&6You will bw warped to {sender}"
+    acceptedRecivier: "&b{receiver} &6is warping to you"
+
+  rejectWarp:
+    rejectedSedner: "&6{receiver} refused your request"
+
 
 
     

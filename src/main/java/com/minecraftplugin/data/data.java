@@ -12,6 +12,7 @@ import java.util.Set;
 
 public class data {
 
+    //Main warp storage file
     public static final File file = new File(Main.getInstance().getDataFolder() + "/data.yml" );
     private FileConfiguration data;
 
