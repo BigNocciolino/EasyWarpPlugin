@@ -27,14 +27,18 @@ public class WarpTo implements CommandExecutor {
                 Player target = Bukkit.getPlayer(args[0]);
                 if (target != null) {
                     if (target != p) {
-                        //TOFIX
+                        //FIX
                         if (Boolean.parseBoolean(Main.getInstance().getConfig().getString("sendRequest"))) {
                             //Create a new request
-                            warpreq request = new warpreq(p, target, warpreq.warpType.WARPTO);
-                            //Add it
-                            warpreq.addRequest(request);
-                            p.sendMessage("Sent request to " + target.getName());
-                            target.sendMessage("Recivied a requesto from " + p.getName());
+                            if (warpreq.getRequestBySender(p).size() >= 1) {
+                                p.sendMessage("You have already sent a request to " + target.getName());
+                            }else {
+                                warpreq request = new warpreq(p, target, warpreq.warpType.WARPTO);
+                                //Add it
+                                warpreq.addRequest(request);
+                                p.sendMessage("Sent request to " + target.getName());
+                                target.sendMessage("Recivied a requesto from " + p.getName());
+                            }
                         }else {
                             warpreq.warpTo(p, target);
                             //TODO messagies

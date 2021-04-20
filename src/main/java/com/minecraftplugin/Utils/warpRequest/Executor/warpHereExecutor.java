@@ -18,6 +18,7 @@ public class warpHereExecutor implements CommandExecutor {
                     Player target = Bukkit.getPlayer(args[0]);
                     if (target != null) {
                         if (target != p) {
+                            //TODO add one request only
                             warpreq req = new warpreq(p, target, warpreq.warpType.WARPHERE);
                             warpreq.addRequest(req);
                             p.sendMessage("Sent warp request to you at " + target.getName());

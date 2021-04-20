@@ -8,8 +8,8 @@ public class warpreq {
 
     public static List<warpreq> requestlist = new ArrayList<>();
 
-    static Player recivier; //Player that receive the request
-    static Player sender; //Player that send request
+    private Player recivier; //Player that receive the request
+    private Player sender; //Player that send request
     private warpType type;
 
     public warpreq(Player sender, Player recivier, warpType tpType) {
@@ -47,7 +47,7 @@ public class warpreq {
 
     public static warpreq getRequestBySenderAndRecivier(Player sender, Player recivier) {
         for (warpreq req : requestlist) {
-            if (req.getRequester() == sender && req.getResponder() == recivier) {
+            if (req.getRequester() == recivier && req.getResponder() == sender) {
                 return req;
             }
         }
@@ -57,7 +57,7 @@ public class warpreq {
     public static List<warpreq> getRequestBySender(Player sender) {
         List<warpreq> requests = new ArrayList<>();
         for (warpreq req : requestlist) {
-            if (req.getRequester() == sender) {
+            if (req.sender == sender) {
                 requests.add(req);
             }
         }

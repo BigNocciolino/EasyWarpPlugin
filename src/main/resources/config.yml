@@ -1,5 +1,5 @@
 #Config file for all commands and possibilities
-#If you have some isessues look at the source code https://github.com/PepegaBruh/EasyWarpPlugin
+#If you have some issues look at the source code https://github.com/PepegaBruh/EasyWarpPlugin
 
 #By default is set to true
 #if is set to true only the owner of the warp can delete itself.
@@ -18,15 +18,15 @@ sendRequest: true
 
 #By default you can't disable the request from a player to him
 
-#Modify this to change the prefix of the messagies in the chat
+#Modify this to change the prefix of the messages in the chat
 #Dont remove the space at the end of the line, or everything will be written attached
 messagiesPrefix: "&5[EasyWarp] "
 
 messagies:
-  #In this section you can change the messagies for the warp
+  #In this section you can change the messages for the warp
   #Chenge the number after the "&"  to change the color 
   warp:
-    warped: "&6You warped yoursef"
+    warped: "&6You warped yourself"
     notExist: "&6There is no warp with this name"
     arg: "%cInsert a warp name"
     permission: "&cYou not have this permission"

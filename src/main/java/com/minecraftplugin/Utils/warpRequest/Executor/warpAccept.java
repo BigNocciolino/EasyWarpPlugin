@@ -1,6 +1,7 @@
 package com.minecraftplugin.Utils.warpRequest.Executor;
 
 import com.minecraftplugin.Utils.warpRequest.Commands.acceptWarp;
+import com.minecraftplugin.Utils.warpRequest.Commands.warpreq;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -29,16 +30,30 @@ public class warpAccept implements CommandExecutor {
                     Player target = Bukkit.getPlayer(args[0]);
                     if (target != null) {
                         if (target != p) {
-                        acceptWarp accept = new acceptWarp(target, p);
-                        acceptWarp.acceptRequest();
+                            warpreq req = warpreq.getRequestBySenderAndRecivier(p, target);
+                            if (req != null) {
+                                if (p == req.getResponder()) {
+                                    acceptWarp accept = new acceptWarp(req);
+                                    accept.acceptRequest();
+                                }else {
+                                    p.sendMessage("Tou cannot accept your request");
+                                }
+                            }else{
+                                p.sendMessage("There is no request");
+                            }
                         }else {
-                            p.sendMessage("Non hai richieste da accettare");
+                            p.sendMessage("Why are you doing this");
                         }
                     }else {
                         p.sendMessage("Questo player non esiste");
                     }
                 }else {
-                    //TODO accetta tutte le richieste verso di te
+                    //Accept the last request
+                    if (warpreq.getRequestBySender(p).size() == 1){
+                        warpreq request = warpreq.getRequestBySender(p).get(0);
+                        acceptWarp accept_all = new acceptWarp(request);
+                        accept_all.acceptRequest();
+                    }
                 }
             }
             return true;

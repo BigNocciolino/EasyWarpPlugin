@@ -8,6 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class warpNo implements CommandExecutor {
+
+    //TODO remove all
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -16,11 +18,25 @@ public class warpNo implements CommandExecutor {
             if (command.getName().equals("warpno")){
                 if (args.length > 0) {
                     Player target = Bukkit.getPlayer(args[0]);
-                    warpreq req = warpreq.getRequestBySenderAndRecivier(p, target);
-                    if (req.getRequester() == p) {
-                        req.removeRequest(req);
+                    if (target != null) {
+                        if (target != p) {
+                            warpreq req = warpreq.getRequestBySenderAndRecivier(p, target);
+                            if (req != null) {
+                                if (req.getResponder() == p) {
+                                    warpreq.removeRequest(req);
+                                    p.sendMessage("Declined request");
+                                    target.sendMessage(p.getName() + " declined your request");
+                                } else {
+                                    p.sendMessage("You have no request from this player");
+                                }
+                            }else {
+                                p.sendMessage("Tardino");
+                            }
+                        }else {
+                            p.sendMessage("Ma si babb");
+                        }
                     }else {
-                        p.sendMessage("You have no request from this player");
+                        p.sendMessage("Il player non esiste");
                     }
                 }
             }

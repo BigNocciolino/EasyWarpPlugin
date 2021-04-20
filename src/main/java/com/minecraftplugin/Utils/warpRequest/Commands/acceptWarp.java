@@ -4,34 +4,34 @@ import org.bukkit.entity.Player;
 
 public class acceptWarp {
 
-    static Player recivier;
-    static Player sender;
+    private warpreq req;
 
-    public acceptWarp(Player send, Player recv) {
-        recivier = recv;
-        sender = send;
+    public acceptWarp(warpreq request) {
+        this.req = request;
     }
 
     //TODO impostare il controllo del warp in classe a parte
-    public static boolean acceptRequest() {
-        warpreq req = warpreq.getRequestBySenderAndRecivier(sender, recivier);
+    public void acceptRequest() {
+
+        Player sender = req.getRequester();
+        Player recivier = req.getResponder();
+
         if (req == null) {
-            return false;
+            sender.sendMessage("Sesso");
         }else {
-            //Warp the player
+            //Warp the player1
             if (req.getType() == warpreq.warpType.WARPTO) {
-                req.warpTo(sender, recivier);
-                warpreq.removeRequest(req);
                 sender.sendMessage("Ti stai warpando da " + recivier.getName());
                 recivier.sendMessage(sender.getName() + " Si sta warpando da te");
-                return true;
+                warpreq.warpTo(sender, recivier);
+                warpreq.removeRequest(req);
             }else {
                 //Warp the recivier of the request to the sender
-                req.warpTo(recivier, sender);
-                warpreq.removeRequest(req);
+                //Request type = WPHERE
                 recivier.sendMessage("Ti stai warpando da " + recivier.getName());
                 sender.sendMessage(sender.getName() + " Si sta warpando da te");
-                return true;
+                warpreq.warpTo(recivier, sender);
+                warpreq.removeRequest(req);
             }
         }
     }
