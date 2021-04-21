@@ -53,18 +53,37 @@ messagies:
 
   warpreq:
     permission: "&cYou not have this permission"
-    warpToYou: "&6You cant sand a request to you"
+    warpToYou: "&6WTF ARE YOU DOING"
     succesfullyWarpedsender: "&6You have successfully sent a request to {receiver}"
     succesfullyWarpedrecivier: "&6You have received a request from {sender}"
     offline: "&6This player is offline"
+    alredySent: "&6You have alredy sent a request to {recivier}"
+    arg: "&cInsert a player name"
+
+  warphere:
+    permission: "&cYou not have this permission"
+    warpToYou: "&6WTF ARE YOU DOING"
+    succesfullyWarpedsender: "&6You have successfully sent a request to {receiver}"
+    succesfullyWarpedrecivier: "&6You have received a request from {sender}"
+    offline: "&6This player is offline"
+    alredySent: "&6You have alredy sent a request to {recivier}"
     arg: "&cInsert a player name"
 
   acceptWarp:
     acceptedSender: "&6You will bw warped to {sender}"
     acceptedRecivier: "&b{receiver} &6is warping to you"
+    noRequest: "There is no request"
+    toYou: "WHY ARE YOU DOING THIS"
+    playerOffline:  "&bThis player is offline"
 
-  rejectWarp:
-    rejectedSedner: "&6{receiver} refused your request"
+  warpno:
+    reject: "&6{receiver} refused your request"
+
+  warpList:
+    noPending: "&6You have no pending requests"
+    pending: "&bYou have pending requests from {sender}"
+
+
 
 
 
