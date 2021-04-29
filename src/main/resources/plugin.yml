@@ -40,3 +40,7 @@ commands:
     description: Use this comman to decline a warp request
     aliases:
       - wpn
+  warpremove:
+    description: Use this command to remove a request thath you have sent
+    aliases:
+      - wpr 

@@ -24,14 +24,14 @@ public class acceptWarp {
                 sender.sendMessage("Ti stai warpando da " + recivier.getName());
                 recivier.sendMessage(sender.getName() + " Si sta warpando da te");
                 warpreq.warpTo(sender, recivier);
-                warpreq.removeRequest(req);
+                req.destroy();
             }else {
                 //Warp the recivier of the request to the sender
                 //Request type = WPHERE
                 recivier.sendMessage("Ti stai warpando da " + recivier.getName());
                 sender.sendMessage(sender.getName() + " Si sta warpando da te");
                 warpreq.warpTo(recivier, sender);
-                warpreq.removeRequest(req);
+                req.destroy();
             }
         }
     }

@@ -25,35 +25,36 @@ public class warpAccept implements CommandExecutor {
             if (command.getName().equals("warpaccept")) {
                 //Who accept
                 Player p = (Player) sender;
-                if (args.length > 0) {
-                    //Who sended the request
-                    Player target = Bukkit.getPlayer(args[0]);
-                    if (target != null) {
-                        if (target != p) {
-                            warpreq req = warpreq.getRequestBySenderAndRecivier(p, target);
-                            if (req != null) {
-                                if (p == req.getResponder()) {
-                                    acceptWarp accept = new acceptWarp(req);
-                                    accept.acceptRequest();
-                                }else {
-                                    p.sendMessage("Tou cannot accept your request");
+                if (warpreq.getRequestsByRevier(p).size() > 1) {
+                    if (args.length > 0) {
+                        //Who sended the request
+                        Player target = Bukkit.getPlayer(args[0]);
+                        if (target != null) {
+                            if (target != p) {
+                                warpreq req = warpreq.getRequestBySenderAndRecivier(p, target);
+                                if (req != null) {
+                                    if (p == req.getResponder()) {
+                                        acceptWarp accept = new acceptWarp(req);
+                                        accept.acceptRequest();
+                                    } else {
+                                        p.sendMessage("Tou cannot accept your request");
+                                    }
+                                } else {
+                                    p.sendMessage("There is no request");
                                 }
-                            }else{
-                                p.sendMessage("There is no request");
+                            } else {
+                                p.sendMessage("Why are you doing this");
                             }
-                        }else {
-                            p.sendMessage("Why are you doing this");
+                        } else {
+                            p.sendMessage("Questo player non esiste");
                         }
                     }else {
-                        p.sendMessage("Questo player non esiste");
+                        p.sendMessage("Insert a player name");
                     }
                 }else {
-                    //Accept the last request
-                    if (warpreq.getRequestBySender(p).size() == 1){
-                        warpreq request = warpreq.getRequestBySender(p).get(0);
-                        acceptWarp accept_all = new acceptWarp(request);
-                        accept_all.acceptRequest();
-                    }
+                    warpreq request = warpreq.getRequestsByRevier(p).get(0);
+                    acceptWarp accept = new acceptWarp(request);
+                    accept.acceptRequest();
                 }
             }
             return true;

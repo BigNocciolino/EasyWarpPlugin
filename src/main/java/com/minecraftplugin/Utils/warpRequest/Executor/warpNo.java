@@ -23,7 +23,7 @@ public class warpNo implements CommandExecutor {
                             warpreq req = warpreq.getRequestBySenderAndRecivier(p, target);
                             if (req != null) {
                                 if (req.getResponder() == p) {
-                                    warpreq.removeRequest(req);
+                                    req.destroy();
                                     p.sendMessage("Declined request");
                                     target.sendMessage(p.getName() + " declined your request");
                                 } else {

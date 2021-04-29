@@ -1,5 +1,7 @@
 package com.minecraftplugin.Utils.warpRequest.Commands;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +13,13 @@ public class warpreq {
     private Player recivier; //Player that receive the request
     private Player sender; //Player that send request
     private warpType type;
+    private BukkitRunnable timer;
 
-    public warpreq(Player sender, Player recivier, warpType tpType) {
+    public warpreq(Player sender, Player recivier, warpType tpType, BukkitRunnable time) {
         this.recivier = recivier;
         this.sender = sender;
         this.type = tpType;
+        this.timer = time;
     }
 
     public Player getRequester() {
@@ -28,6 +32,10 @@ public class warpreq {
 
     public warpType getType() {
         return type;
+    }
+
+    public BukkitRunnable getTimer(){
+        return timer;
     }
 
     public enum warpType {
@@ -75,6 +83,11 @@ public class warpreq {
 
     public static void warpTo(Player send, Player recv) {
         send.teleport(recv.getLocation());
+    }
+
+    public void destroy(){
+        timer.cancel();
+        removeRequest(this);
     }
 
 }

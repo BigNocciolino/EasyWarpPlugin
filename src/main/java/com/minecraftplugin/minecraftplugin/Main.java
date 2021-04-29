@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 
 public final class Main extends JavaPlugin {
 
+//TODO add the reload config option
+
     public static Main plugin;
     public static data data;
     private final String pluginName = this.getConfig().getString("messagiesPrefix").replaceAll("&", " ");
@@ -24,20 +26,21 @@ public final class Main extends JavaPlugin {
         plugin = this;
         //All commands
         System.out.println( pluginName + " The plugin was started successfully");
+        //For the warp
         this.getCommand("setwarp").setExecutor(new setWarpExc());
         this.getCommand("warp").setExecutor(new WarpExc());
         this.getCommand("warp").setTabCompleter(new Tabcompleter());
         this.getCommand("delwarp").setExecutor(new delWarpExc());
         this.getCommand("delwarp").setTabCompleter(new Tabcompleter());
         this.getCommand("warps").setExecutor(new WarpsExc());
-        //this.getCommand("warpto").setExecutor(new WarpTo());
 
-        //Provvisori per testing
+        //For the warp request
         this.getCommand("warpto").setExecutor(new WarpTo());
         this.getCommand("warpaccept").setExecutor(new warpAccept());
         this.getCommand("warphere").setExecutor(new warpHereExecutor());
         this.getCommand("warplist").setExecutor(new warpList());
         this.getCommand("warpno").setExecutor(new warpNo());
+        this.getCommand("warpremove").setExecutor(new warpRemove());
         this.saveDefaultConfig();
         this.reloadConfig();
         data = new data();

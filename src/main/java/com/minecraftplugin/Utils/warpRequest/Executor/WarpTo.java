@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class WarpTo implements CommandExecutor {
 
@@ -33,7 +34,16 @@ public class WarpTo implements CommandExecutor {
                             if (warpreq.getRequestBySender(p).size() >= 1) {
                                 p.sendMessage("You have already sent a request to " + target.getName());
                             }else {
-                                warpreq request = new warpreq(p, target, warpreq.warpType.WARPTO);
+                                BukkitRunnable run = new BukkitRunnable() {
+                                    @Override
+                                    public void run() {
+                                        p.sendMessage("Your request expired");
+                                        warpreq.removeRequest(warpreq.getRequestBySenderAndRecivier(target, p));
+                                    }
+                                };
+                                //TODO add config expire time
+                                run.runTaskLater(Main.getInstance(), 60 * 20); // Transform in second
+                                warpreq request = new warpreq(p, target, warpreq.warpType.WARPTO, run);
                                 //Add it
                                 warpreq.addRequest(request);
                                 p.sendMessage("Sent request to " + target.getName());
