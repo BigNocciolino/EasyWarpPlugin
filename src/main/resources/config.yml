@@ -1,5 +1,6 @@
 #Config file for all commands and possibilities
 #If you have some issues look at the source code https://github.com/PepegaBruh/EasyWarpPlugin
+configVersion: 1.0
 
 #By default is set to true
 #if is set to true only the owner of the warp can delete itself.
@@ -12,9 +13,12 @@ deletewarp:
 usePermission: false
 
 #By default is set to true
-#If you set this to false you disable the request to warp to a player
-sendRequest: true
-#  maxRequest: 5
+warpRequest:
+  #If you set this to false you disable the request to warp to a player
+  sendRequest: true
+  requestLifetime: 60
+
+
 
 #By default you can't disable the request from a player to him
 
@@ -54,34 +58,42 @@ messagies:
   warpreq:
     permission: "&cYou not have this permission"
     warpToYou: "&6WTF ARE YOU DOING"
-    succesfullyWarpedsender: "&6You have successfully sent a request to {receiver}"
-    succesfullyWarpedrecivier: "&6You have received a request from {sender}"
+    succesfullyWarpedsender: "&6You have successfully sent a request to {player}"
+    succesfullyWarpedrecivier: "&6You have received a request from {player}"
     offline: "&6This player is offline"
-    alredySent: "&6You have alredy sent a request to {recivier}"
+    aredySent: "&6You have already sent a request to {player}"
     arg: "&cInsert a player name"
+    expired: "&6The request to {player} expired"
+    expiredRecivier: "&6The request from {player} expired"
 
   warphere:
     permission: "&cYou not have this permission"
     warpToYou: "&6WTF ARE YOU DOING"
-    succesfullyWarpedsender: "&6You have successfully sent a request to {receiver}"
-    succesfullyWarpedrecivier: "&6You have received a request from {sender}"
+    succesfullyWarpedsender: "&6You have successfully sent a request to {player}"
+    succesfullyWarpedrecivier: "&6You have received a request from {player}"
     offline: "&6This player is offline"
-    alredySent: "&6You have already sent a request to {recivier}"
+    alredySent: "&6You have already sent a request to {player}"
+    expired: "&6The request to {player} expired"
+    expiredRecivier: "&6The request from {player} expired"
     arg: "&cInsert a player name"
 
   acceptWarp:
-    acceptedSender: "&6You will bw warped to {sender}"
-    acceptedRecivier: "&b{receiver} &6is warping to you"
+    #for the warphere these 2 work in reverse
+    acceptedSender: "&6You will bw warped to {player}"
+    acceptedRecivier: "&b{player} &6is warping to you"
+    ###############################################à
     noRequest: "There is no request"
     toYou: "WHY ARE YOU DOING THIS"
-    playerOffline:  "&bThis player is offline"
+    offline: "&6This player is offline"
+    arg: "&cInsert a player name"
 
   warpno:
-    reject: "&6{receiver} refused your request"
+    reject: "&6{player} refused your request"
+    rejectRecivier: "&6{player} declined your request"
 
   warpList:
     noPending: "&6You have no pending requests"
-    pending: "&bYou have pending requests from {sender}"
+    pending: "&bYou have pending requests from {player}"
 
 
 

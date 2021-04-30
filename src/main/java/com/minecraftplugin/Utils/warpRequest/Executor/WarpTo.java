@@ -1,5 +1,6 @@
 package com.minecraftplugin.Utils.warpRequest.Executor;
 
+import com.minecraftplugin.Utils.CustomMessagies;
 import com.minecraftplugin.Utils.warpRequest.Commands.warpreq;
 import com.minecraftplugin.minecraftplugin.Main;
 import org.bukkit.Bukkit;
@@ -29,15 +30,16 @@ public class WarpTo implements CommandExecutor {
                 if (target != null) {
                     if (target != p) {
                         //FIX
-                        if (Boolean.parseBoolean(Main.getInstance().getConfig().getString("sendRequest"))) {
+                        if (Boolean.parseBoolean(Main.getInstance().getConfig().getString("warpRequest.sendRequest"))) {
                             //Create a new request
                             if (warpreq.getRequestBySender(p).size() >= 1) {
-                                p.sendMessage("You have already sent a request to " + target.getName());
+                                CustomMessagies.sendMessage(p, "warpreq.aredySent", "{player}", target.getName());
                             }else {
                                 BukkitRunnable run = new BukkitRunnable() {
                                     @Override
                                     public void run() {
-                                        p.sendMessage("Your request expired");
+                                        CustomMessagies.sendMessage(p, "warpreq.expired", "{player}", target.getName());
+                                        CustomMessagies.sendMessage(target, "warpreq.expiredRecivier", "{player}", p.getName());
                                         warpreq.removeRequest(warpreq.getRequestBySenderAndRecivier(target, p));
                                     }
                                 };
@@ -46,22 +48,23 @@ public class WarpTo implements CommandExecutor {
                                 warpreq request = new warpreq(p, target, warpreq.warpType.WARPTO, run);
                                 //Add it
                                 warpreq.addRequest(request);
-                                p.sendMessage("Sent request to " + target.getName());
-                                target.sendMessage("Recivied a requesto from " + p.getName());
+                                CustomMessagies.sendMessage(p, "warpreq.succesfullyWarpedsender", "{player}", target.getName());
+                                CustomMessagies.sendMessage(target, "warpreq.succesfullyWarpedrecivier", "{player}", p.getName());
                             }
                         }else {
                             warpreq.warpTo(p, target);
                             //TODO messagies
                         }
                     }else {
-                        p.sendMessage("WTF are you doing WHY");
+                        CustomMessagies.sendMessage(p, "warpreq.warpToYou");
                     }
                 }else {
-                    p.sendMessage("Questo player non esiste");
+                    CustomMessagies.sendMessage(p, "warpreq.offline");
                 }
             }else {
-                p.sendMessage("inserisci il nome del player a cui vuoi fare la richiesta");
+                CustomMessagies.sendMessage(p, "warpreq.arg");
             }
+            return true;
         }
         return false;
     }

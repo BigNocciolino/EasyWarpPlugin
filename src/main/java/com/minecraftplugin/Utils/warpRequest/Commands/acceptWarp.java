@@ -1,5 +1,6 @@
 package com.minecraftplugin.Utils.warpRequest.Commands;
 
+import com.minecraftplugin.Utils.CustomMessagies;
 import org.bukkit.entity.Player;
 
 public class acceptWarp {
@@ -21,15 +22,15 @@ public class acceptWarp {
         }else {
             //Warp the player1
             if (req.getType() == warpreq.warpType.WARPTO) {
-                sender.sendMessage("Ti stai warpando da " + recivier.getName());
-                recivier.sendMessage(sender.getName() + " Si sta warpando da te");
+                CustomMessagies.sendMessage(sender, "acceptWarp.acceptedSender", "{player}", recivier.getName());
+                CustomMessagies.sendMessage(recivier, "acceptWarp.acceptedRecivier", "{player}", sender.getName());
                 warpreq.warpTo(sender, recivier);
                 req.destroy();
             }else {
                 //Warp the recivier of the request to the sender
                 //Request type = WPHERE
-                recivier.sendMessage("Ti stai warpando da " + recivier.getName());
-                sender.sendMessage(sender.getName() + " Si sta warpando da te");
+                CustomMessagies.sendMessage(recivier, "acceptWarp.acceptedSender", "{player}", sender.getName());
+                CustomMessagies.sendMessage(sender, "acceptWarp.acceptedRecivier", "{player}", recivier.getName());
                 warpreq.warpTo(recivier, sender);
                 req.destroy();
             }

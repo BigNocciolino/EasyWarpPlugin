@@ -1,5 +1,6 @@
 package com.minecraftplugin.Utils.warpRequest.Executor;
 
+import com.minecraftplugin.Utils.CustomMessagies;
 import com.minecraftplugin.Utils.warpRequest.Commands.acceptWarp;
 import com.minecraftplugin.Utils.warpRequest.Commands.warpreq;
 import org.bukkit.Bukkit;
@@ -37,19 +38,19 @@ public class warpAccept implements CommandExecutor {
                                         acceptWarp accept = new acceptWarp(req);
                                         accept.acceptRequest();
                                     } else {
-                                        p.sendMessage("Tou cannot accept your request");
+                                        CustomMessagies.sendMessage(p, "acceptWarp.toYou");
                                     }
                                 } else {
-                                    p.sendMessage("There is no request");
+                                    CustomMessagies.sendMessage(p, "acceptWarp.noRequest");
                                 }
                             } else {
-                                p.sendMessage("Why are you doing this");
+                                CustomMessagies.sendMessage(p, "acceptWarp.toYou");
                             }
                         } else {
-                            p.sendMessage("Questo player non esiste");
+                            CustomMessagies.sendMessage(p, "acceptWarp.offline");
                         }
                     }else {
-                        p.sendMessage("Insert a player name");
+                        CustomMessagies.sendMessage(p, "acceptWarp.arg");
                     }
                 }else {
                     warpreq request = warpreq.getRequestsByRevier(p).get(0);

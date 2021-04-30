@@ -1,5 +1,6 @@
 package com.minecraftplugin.Utils.warpRequest.Executor;
 
+import com.minecraftplugin.Utils.CustomMessagies;
 import com.minecraftplugin.Utils.warpRequest.Commands.warpreq;
 import com.minecraftplugin.minecraftplugin.Main;
 import org.bukkit.Bukkit;
@@ -14,40 +15,39 @@ public class warpHereExecutor implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
         if (sender instanceof Player) {
-            Player p = (Player)sender;
-            if (command.getName().equals("warphere")) {
-                if (args.length > 0) {
-                    Player target = Bukkit.getPlayer(args[0]);
-                    if (target != null) {
-                        if (target != p) {
-                            if (warpreq.getRequestBySender(p).size() >= 1) {
-                                p.sendMessage("You have alredy sent a request");
-                            }else {
-                                //TODO add one request only
-                                BukkitRunnable run = new BukkitRunnable() {
-                                    @Override
-                                    public void run() {
-                                        p.sendMessage("Your request expired");
-                                        warpreq.removeRequest(warpreq.getRequestBySenderAndRecivier(target, p));
-                                    }
-                                };
-                                //TODO config
-                                run.runTaskLater(Main.getInstance(), 60 * 20);
-                                warpreq req = new warpreq(p, target, warpreq.warpType.WARPHERE, run);
-                                warpreq.addRequest(req);
-                                p.sendMessage("Sent warp request to you at " + target.getName());
-                                target.sendMessage("Recivied warp request to him from " + p.getName());
-                            }
-                        }else {
-                            p.sendMessage("WHYYYYYYYYYYYYYYYY");
+            Player p = (Player) sender;
+            if (args.length > 0) {
+                Player target = Bukkit.getPlayer(args[0]);
+                if (target != null) {
+                    if (target != p) {
+                        if (warpreq.getRequestBySender(p).size() >= 1) {
+                            CustomMessagies.sendMessage(p, "warphere.alredySent", "{player}", target.getName());
+                        } else {
+                            BukkitRunnable run = new BukkitRunnable() {
+                                @Override
+                                public void run() {
+                                    CustomMessagies.sendMessage(p, "warphere.expired", "{player}", target.getName());
+                                    CustomMessagies.sendMessage(target, "warphere.expiredRecivier", "{player}", p.getName());
+                                    warpreq.removeRequest(warpreq.getRequestBySenderAndRecivier(target, p));
+                                }
+                            };
+                            //TODO config
+                            run.runTaskLater(Main.getInstance(), 60 * 20);
+                            warpreq req = new warpreq(p, target, warpreq.warpType.WARPHERE, run);
+                            warpreq.addRequest(req);
+                            CustomMessagies.sendMessage(p, "warphere.succesfullyWarpedsender", "{player}", target.getName());
+                            CustomMessagies.sendMessage(target, "warphere.succesfullyWarpedrecivier", "{player}", p.getName());
                         }
-                    }else {
-                        p.sendMessage("Questo player non esiste");
+                    } else {
+                        CustomMessagies.sendMessage(p, "warphere.warpToYou");
                     }
-                }else {
-                    p.sendMessage("Inserisci il nome del player");
+                } else {
+                    CustomMessagies.sendMessage(p, "warphere.offline");
                 }
+            } else {
+                CustomMessagies.sendMessage(p, "warphere.arg");
             }
+            return true;
         }
         return false;
     }
