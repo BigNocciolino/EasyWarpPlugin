@@ -1,5 +1,6 @@
 package com.minecraftplugin.Executors;
 
+import com.minecraftplugin.Utils.CustomMessagies;
 import com.minecraftplugin.listener.commands.warp;
 import com.minecraftplugin.minecraftplugin.Main;
 import org.bukkit.ChatColor;
@@ -9,8 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class WarpExc implements CommandExecutor {
-
-    private final String pluginName = Main.getInstance().getConfig().getString("messagiesPrefix").replaceAll("&", "§");
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -23,10 +22,10 @@ public class WarpExc implements CommandExecutor {
                     if (args.length >= 1) {
                         warpYou(p, args[0]);
                     }else {
-                        p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warp.arg").replaceAll("&", "§"));
+                        CustomMessagies.sendMessage(p, "warp.arg");
                     }
                 }else {
-                    sender.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warp.permission").replaceAll("&", "§"));
+                    CustomMessagies.sendMessage(p, "warp.permission");
                 }
             } else {
                 if (command.getName().equals("warp")) {
@@ -46,12 +45,12 @@ public class WarpExc implements CommandExecutor {
             warp warp = new warp(p, wpName);
             if (Main.getData().warpExist(wpName) != true) {
                 warp.warpYourself();
-                p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warp.warped").replaceAll("&", "§"));
+                CustomMessagies.sendMessage(p, "warp.warped", "{warp}", wpName);
             } else {
-                p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warp.notExist").replaceAll("&", "§"));
+                CustomMessagies.sendMessage(p, "warp.notExist");
             }
         } else {
-            p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warp.arg").replaceAll("&", "§"));
+            CustomMessagies.sendMessage(p, "warp.arg");
         }
     }
 }

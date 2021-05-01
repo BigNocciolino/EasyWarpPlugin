@@ -1,5 +1,6 @@
 package com.minecraftplugin.Executors;
 
+import com.minecraftplugin.Utils.CustomMessagies;
 import com.minecraftplugin.listener.commands.delWarp;
 import com.minecraftplugin.minecraftplugin.Main;
 import org.bukkit.command.Command;
@@ -21,7 +22,7 @@ public class delWarpExc implements CommandExecutor {
                 if (p.hasPermission("warp.warp")) {
                     deleteWarp(p, args[0]);
                 }else {
-                    p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.delwarp.permission").replaceAll("&", "§"));
+                    CustomMessagies.sendMessage(p, "delwarp.permission");
                 }
             } else {
                 if (command.getName().equals("delwarp")) {
@@ -43,21 +44,21 @@ public class delWarpExc implements CommandExecutor {
                 if (Boolean.parseBoolean(Main.getInstance().getConfig().getString("deletewarp.onlyOwner")) == true) {
                     if (p.getName().equals(Main.getData().returnOwner(wpName)) || p.isOp()) {
                         delWarp.delwarp();
-                        p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.delwarp.succesfullyDeleted").replaceAll("&", "§"));
+                        CustomMessagies.sendMessage(p,"delwarp.succesfullyDeleted");
                     } else {
-                        p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.delwarp.onlyOwner").replaceAll("&", "§"));
+                        CustomMessagies.sendMessage(p, "delwarp.onlyOwner");
                     }
                     //Else everyone can delete it
                 } else {
                     delWarp.delwarp();
                     //succesullyDeleted
-                    p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.delwarp.succesfullyDeleted").replaceAll("&", "§"));
+                    CustomMessagies.sendMessage(p,"delwarp.succesfullyDeleted");
                 }
             } else {
-                p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.delwarp.notExixst").replaceAll("&", "§"));
+                CustomMessagies.sendMessage(p, "delwarp.notExixst");
             }
         } else {
-            p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.delwarp.arg").replaceAll("&", "§"));
+            CustomMessagies.sendMessage(p, "delwarp.arg");
         }
     }
 

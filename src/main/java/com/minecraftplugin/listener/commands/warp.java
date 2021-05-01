@@ -10,7 +10,6 @@ public class warp {
 
     private Player p;
     private String warpName;
-    Player recivier;
 
     public warp(Player p,  String warpName) {
         this.p = p;

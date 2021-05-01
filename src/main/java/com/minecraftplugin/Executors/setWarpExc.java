@@ -1,5 +1,6 @@
 package com.minecraftplugin.Executors;
 
+import com.minecraftplugin.Utils.CustomMessagies;
 import com.minecraftplugin.listener.commands.setWarp;
 import com.minecraftplugin.minecraftplugin.Main;
 import org.bukkit.ChatColor;
@@ -10,8 +11,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class setWarpExc implements CommandExecutor {
-
-    private final String pluginName = Main.getInstance().getConfig().getString("messagiesPrefix").replaceAll("&", "§");
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -24,7 +23,7 @@ public class setWarpExc implements CommandExecutor {
                 if (p.hasPermission("warp.warp")) {
                     setTheWarp(p, args[0], lo);
                 }else {
-                    sender.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.setwarp.permission").replaceAll("&", "§"));
+                    CustomMessagies.sendMessage(p, "setwarp.permission");
                 }
             } else {
                 if (command.getName().equals("setwarp")) {
@@ -42,12 +41,12 @@ public class setWarpExc implements CommandExecutor {
             setWarp setWarp = new setWarp(p, lo, wpName);
             if (Main.getData().warpExist(wpName)) {
                 setWarp.stWarp();
-                p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.setwarp.succesfullySet").replaceAll("&", "§"));
+                CustomMessagies.sendMessage(p, "setwarp.succesfullySet");
             } else {
-                p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.setwarp.alredyExist").replaceAll("&", "§"));
+                CustomMessagies.sendMessage(p, "setwarp.alredyExist");
             }
         } else {
-            p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.setwarp.arg").replaceAll("&", "§"));
+            CustomMessagies.sendMessage(p, "setwarp.arg");
         }
     }
 

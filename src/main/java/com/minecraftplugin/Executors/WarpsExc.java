@@ -1,5 +1,6 @@
 package com.minecraftplugin.Executors;
 
+import com.minecraftplugin.Utils.CustomMessagies;
 import com.minecraftplugin.listener.commands.warplist;
 import com.minecraftplugin.minecraftplugin.Main;
 import org.bukkit.command.Command;
@@ -23,7 +24,7 @@ public class WarpsExc implements CommandExecutor {
                 if (p.hasPermission("warp.warp")) {
                     warpList(p);
                 }else {
-                    p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warps.permission").replaceAll("&", "§"));
+                    CustomMessagies.sendMessage(p, "warps.permission");
                 }
             } else {
                 if (command.getName().equals("warps")) {
@@ -40,11 +41,10 @@ public class WarpsExc implements CommandExecutor {
         List<String> warps = warplist.returnWarpList();
         if (warplist.returnWarpList() != null) {
             for (String x : warps) {
-                p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warps.warpList")
-                        .replaceAll("\\{warps}", x).replaceAll("\\{OwnerName}", Main.getData().returnOwner(x)).replaceAll("&", "§"));
+                CustomMessagies.sendMessage(p, "warps.warpList", "{warp}", x, "{OwnerName}", Main.getData().returnOwner(x));
             }
         } else {
-            p.sendMessage(pluginName + Main.getInstance().getConfig().getString("messagies.warps.noWaroInList").replaceAll("&", "§"));
+            CustomMessagies.sendMessage(p, "warps.noWarpIist");
         }
     }
 
