@@ -18,6 +18,7 @@ public class warpHereExecutor implements CommandExecutor {
             Player p = (Player) sender;
             if (args.length > 0) {
                 Player target = Bukkit.getPlayer(args[0]);
+                int expireTime = Integer.parseInt(Main.getInstance().getConfig().getString("warpRequest.requestLifetime"));
                 if (target != null) {
                     if (target != p) {
                         if (warpreq.getRequestBySender(p).size() >= 1) {
@@ -32,7 +33,7 @@ public class warpHereExecutor implements CommandExecutor {
                                 }
                             };
                             //TODO config
-                            run.runTaskLater(Main.getInstance(), 60 * 20);
+                            run.runTaskLater(Main.getInstance(), expireTime * 20);
                             warpreq req = new warpreq(p, target, warpreq.warpType.WARPHERE, run);
                             warpreq.addRequest(req);
                             CustomMessagies.sendMessage(p, "warphere.succesfullyWarpedsender", "{player}", target.getName());

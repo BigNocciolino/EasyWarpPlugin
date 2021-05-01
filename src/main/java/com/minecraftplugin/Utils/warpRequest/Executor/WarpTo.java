@@ -27,6 +27,7 @@ public class WarpTo implements CommandExecutor {
             if (args.length > 0) {
                 //Player who recive the request
                 Player target = Bukkit.getPlayer(args[0]);
+                int lifetime = Integer.parseInt(Main.getInstance().getConfig().getString("warpRequest.requestLifetime"));
                 if (target != null) {
                     if (target != p) {
                         //FIX
@@ -44,7 +45,7 @@ public class WarpTo implements CommandExecutor {
                                     }
                                 };
                                 //TODO add config expire time
-                                run.runTaskLater(Main.getInstance(), 60 * 20); // Transform in second
+                                run.runTaskLater(Main.getInstance(), lifetime * 20); // Transform in second
                                 warpreq request = new warpreq(p, target, warpreq.warpType.WARPTO, run);
                                 //Add it
                                 warpreq.addRequest(request);

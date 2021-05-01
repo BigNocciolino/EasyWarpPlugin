@@ -16,7 +16,7 @@ usePermission: false
 warpRequest:
   #If you set this to false you disable the request to warp to a player
   sendRequest: true
-  requestLifetime: 60
+  requestLifetime: "60"
 
 
 
@@ -88,8 +88,22 @@ messagies:
     arg: "&cInsert a player name"
 
   warpno:
-    reject: "&6{player} refused your request"
-    rejectRecivier: "&6{player} declined your request"
+    reject: "You removed the request to {player}"
+    rejectRecivier : "&6{player} declined your request"
+    notResponder: "You cannot decline your request \nType /warpremove {player} to remove the request"
+    noRequest: "There is no request from this player"
+    toYou: "WHY ARE YOU DOING THIS"
+    offline: "&6This player is offline"
+    arg: "&cInsert a player name"
+
+  warpRemove:
+    removed: "Request destroyed"
+    removedRecivier: "The request from {player} was destroyed"
+    noRequest: "There is no request to this player"
+    noRecivier: "You cannot remove your reuest \nType /warpremove {player} to remove the request"
+    toYou: "WHY ARE YOU DOING THIS"
+    offline: "This player is offline"
+    arg: "Insert a player name"
 
   warpList:
     noPending: "&6You have no pending requests"

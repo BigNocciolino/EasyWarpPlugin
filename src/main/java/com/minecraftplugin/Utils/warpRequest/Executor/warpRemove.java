@@ -1,5 +1,6 @@
 package com.minecraftplugin.Utils.warpRequest.Executor;
 
+import com.minecraftplugin.Utils.CustomMessagies;
 import com.minecraftplugin.Utils.warpRequest.Commands.warpreq;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -22,27 +23,29 @@ public class warpRemove implements CommandExecutor {
                             if (req != null){
                                 if (p == req.getRequester()) {
                                     req.destroy();
-                                    p.sendMessage("Request destroyed");
-                                    target.sendMessage(p.getName() + " removed the request");
+                                    CustomMessagies.sendMessage(p, "warpRemove.removed");
+                                    CustomMessagies.sendMessage(target, "warpRemove.removedRecivier", "{player}", p.getName());
+                                }else {
+                                    CustomMessagies.sendMessage(p, "warpRemove.noRecivier", "{player}", target.getName());
                                 }
                             }else {
-                                p.sendMessage("You have no request");
+                                CustomMessagies.sendMessage(p, "warpRemove.noRequest");
                             }
                         }else {
-                            p.sendMessage("Why");
+                            CustomMessagies.sendMessage(p, "warpRemove.toYou");
                         }
                     }else {
-                        p.sendMessage("This player doesent exist");
+                        CustomMessagies.sendMessage(p, "warpRemove.offline");
                     }
                 }else {
-                    p.sendMessage("Inserisci in player");
+                    CustomMessagies.sendMessage(p, "warpRemove.offline");
                 }
             }else {
                 warpreq request = warpreq.getRequestBySender(p).get(0);
                 Player target = request.getResponder();
                 request.destroy();
-                p.sendMessage("Removed the request");
-                target.sendMessage(p.getName() + " removed the request");
+                CustomMessagies.sendMessage(p, "warpRemove.removed");
+                CustomMessagies.sendMessage(target, "warpRemove.removedRecivier", "{player}", p.getName());
             }
 
             return true;

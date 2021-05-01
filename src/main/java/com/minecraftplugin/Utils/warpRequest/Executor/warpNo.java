@@ -1,5 +1,6 @@
 package com.minecraftplugin.Utils.warpRequest.Executor;
 
+import com.minecraftplugin.Utils.CustomMessagies;
 import com.minecraftplugin.Utils.warpRequest.Commands.warpreq;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -24,20 +25,22 @@ public class warpNo implements CommandExecutor {
                             if (req != null) {
                                 if (req.getResponder() == p) {
                                     req.destroy();
-                                    p.sendMessage("Declined request");
-                                    target.sendMessage(p.getName() + " declined your request");
+                                    CustomMessagies.sendMessage(p, "warpno.reject", "{player}", target.getName());
+                                    CustomMessagies.sendMessage(target, "warpno.rejectRecivier", "{player}", target.getName());
                                 } else {
-                                    p.sendMessage("You have no request from this player");
+                                    CustomMessagies.sendMessage(p, "warpno.notResponder", "{player}", target.getName());
                                 }
                             }else {
-                                p.sendMessage("Tardino");
+                                CustomMessagies.sendMessage(p, "warpno.noRequest");
                             }
                         }else {
-                            p.sendMessage("Ma si babb");
+                            CustomMessagies.sendMessage(p, "warpno.toYou");
                         }
                     }else {
-                        p.sendMessage("Il player non esiste");
+                        CustomMessagies.sendMessage(p, "warpno.offline");
                     }
+                }else {
+                    CustomMessagies.sendMessage(p, "warpno.arg");
                 }
             }
             return true;
