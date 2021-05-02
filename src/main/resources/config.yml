@@ -29,84 +29,84 @@ messagies:
   #In this section you can change the messages for the warp
   #Chenge the number after the "&"  to change the color 
   warp:
-    warped: "&6You warped yourself to {warp}"
-    notExist: "&6There is no warp with this name"
-    arg: "%cInsert a warp name"
-    permission: "&cYou not have this permission"
+    warped: "&b↑ &8» &7You warped yourself to {warp}"
+    notExist: "&b↑ &8» &7There is no warp with this name"
+    arg: "&b↑ &8» &cInsert a warp name"
+    permission: "&b↑ &8» &cYou not have this permission"
 
   #Change this string tho change the messages when a player set a warp
   setwarp:
-    succesfullySet: "&6Warp successfully set"
-    alredyExist: "&6This warp already exist"
-    arg: "&cInsert a valid warp name"
-    permission: "&cYou not have this permission"
+    succesfullySet: "&b↑ &8» &7Warp successfully set"
+    alredyExist: "&b↑ &8» &7This warp already exist"
+    arg: "&b↑ &8» &cInsert a valid warp name"
+    permission: "&b↑ &8» &cYou not have this permission"
 
   delwarp:
-    succesfullyDeleted: "&6Successfully deleted the warp"
-    permission: "&cYou not have this permission"
-    onlyOwner: "&cOnly the owner of this warp can delete it"
-    notExixst: "&6There is no warp with this name"
-    arg: "&cInsert a valid warp name"
+    succesfullyDeleted: "&b↑ &8» &7Successfully deleted the warp"
+    permission: "&b↑ &8» &cYou not have this permission"
+    onlyOwner: "&b↑ &8» &cOnly the owner of this warp can delete it"
+    notExixst: "&b↑ &8» &7There is no warp with this name"
+    arg: "&b↑ &8» &cInsert a valid warp name"
 
   warps:
-    permission: "&cYou not have this permission"
+    permission: "&b↑ &8» &cYou not have this permission"
     #Dont modify {warps} and {OwnerName} or will not work
-    warpList: "&6Name: &b{warp} &6Owner: &b{OwnerName}"
-    noWarpIist: "&cThere is no warp in the list"
+    warpList: "&b↑ &8» &7Name: &b{warp} &6Owner: &b{OwnerName}"
+    noWarpIist: "&b↑ &8» &cThere is no warp in the list"
 
   warpreq:
-    permission: "&cYou not have this permission"
+    permission: "&b↑ &8» &cYou not have this permission"
     warpToYou: "&b↑ &8» &7WTF ARE YOU DOING"
-    succesfullyWarpedsender: "&6You have successfully sent a request to {player}"
-    succesfullyWarpedrecivier: "&6You have received a request from {player}"
-    offline: "&6This player is offline"
-    aredySent: "&6You have already sent a request to {player}"
-    arg: "&b↑ &8» &7Insert a player namer"
-    expired: "&6The request to {player} expired"
-    expiredRecivier: "&6The request from {player} expired"
+    succesfullyWarpedsender: "&b↑ &8» &7You have successfully sent a request to {player}"
+    succesfullyWarpedrecivier: "&b↑ &8» &7You have received a request from {player}"
+    offline: "&b↑ &8» &7This player is offline"
+    aredySent: "&b↑ &8» &cYou have already sent a request to {player}"
+    arg: "&b↑ &8» &cInsert a player namer"
+    expired: "&b↑ &8» &7The request to {player} expired"
+    expiredRecivier: "&b↑ &8» &7The request from {player} expired"
 
   warphere:
-    permission: "&cYou not have this permission"
-    warpToYou: "&6WTF ARE YOU DOING"
-    succesfullyWarpedsender: "&6You have successfully sent a request to {player}"
-    succesfullyWarpedrecivier: "&6You have received a request from {player}"
-    offline: "&6This player is offline"
-    alredySent: "&6You have already sent a request to {player}"
-    expired: "&6The request to {player} expired"
-    expiredRecivier: "&6The request from {player} expired"
-    arg: "&cInsert a player name"
+    permission: "&b↑ &8» &cYou not have this permission"
+    warpToYou: "&b↑ &8» &7WTF ARE YOU DOING"
+    succesfullyWarpedsender: "&b↑ &8» &7You have successfully sent a request to {player}"
+    succesfullyWarpedrecivier: "&b↑ &8» &7You have received a request from {player}"
+    offline: "&b↑ &8» &7This player is offline"
+    alredySent: "&b↑ &8» &7You have already sent a request to {player}"
+    expired: "&b↑ &8» &7The request to {player} expired"
+    expiredRecivier: "&b↑ &8» &7The request from {player} expired"
+    arg: "&b↑ &8» &cInsert a player name"
 
   acceptWarp:
     #for the warphere these 2 work in reverse
-    acceptedSender: "&6You will bw warped to {player}"
-    acceptedRecivier: "&b{player} &6is warping to you"
+    acceptedSender: "&b↑ &8» &7You will bw warped to {player}"
+    acceptedRecivier: "&b↑ &8» &7{player} is warping to you"
     ###############################################à
-    noRequest: "There is no request"
-    toYou: "WHY ARE YOU DOING THIS"
-    offline: "&6This player is offline"
-    arg: "&cInsert a player name"
+    noRequest: "&b↑ &8» &7There is no request"
+    toYou: "&b↑ &8» &7WHY ARE YOU DOING THIS"
+    offline: "&b↑ &8» &7This player is offline"
+    arg: "&b↑ &8» &cInsert a player name"
 
   warpno:
-    reject: "You removed the request to {player}"
-    rejectRecivier : "&6{player} declined your request"
-    notResponder: "You cannot decline your request \nType /warpremove {player} to remove the request"
-    noRequest: "There is no request from this player"
-    toYou: "WHY ARE YOU DOING THIS"
-    offline: "&6This player is offline"
-    arg: "&cInsert a player name"
+    reject: "&b↑ &8» &7You removed the request to {player}"
+    rejectRecivier : "&b↑ &8» &7{player} declined your request"
+    notResponder: "&b↑ &8» &7You cannot decline your request \nType /warpremove {player} to remove the request"
+    noRequest: "&b↑ &8» &7There is no request from this player"
+    toYou: "&b↑ &8» &7WHY ARE YOU DOING THIS"
+    offline: "&b↑ &8» &7This player is offline"
+    arg: "&b↑ &8» &cInsert a player name"
 
   warpRemove:
-    removed: "Request destroyed"
-    removedRecivier: "The request from {player} was destroyed"
-    noRequest: "There is no request to this player"
-    noRecivier: "You cannot remove your reuest \nType /warpremove {player} to remove the request"
-    toYou: "WHY ARE YOU DOING THIS"
-    offline: "This player is offline"
-    arg: "Insert a player name"
+    removed: "&b↑ &8» &7Request destroyed"
+    removedRecivier: "&b↑ &8» &7The request from {player} was destroyed"
+    noRequest: "&b↑ &8» &7There is no request to this player"
+    noRecivier: "&b↑ &8» &7You cannot remove your reuest \nType /warpremove {player} to remove the request"
+    toYou: "&b↑ &8» &7WHY ARE YOU DOING THIS"
+    offline: "&b↑ &8» &7This player is offline"
+    arg: "&b↑ &8» &cInsert a player name"
 
   warpList:
-    noPending: "&6You have no pending requests"
-    pending: "&bYou have pending requests from {player}"
+    noPending: "&b↑ &8» &7You have no pending requests"
+    pending: "&b↑ &8» &cYou have pending requests from {player}"
 
 
 
