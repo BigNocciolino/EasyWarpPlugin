@@ -12,7 +12,19 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 
 **/warps:** Use this command to show the list of all warp
 
-**warpto** Use this command to warp yourself to another player
+**/warpto:** Use this command to warp yourself to another player
+
+**/warpRequest:** | Send a request to another player 
+
+**/warpaccept:** | Accept a pending request
+
+**/warpremove:** | Remove a request that you sent
+
+**/warpno:** | Decline a pending request
+
+**/warplist:** | Show a list of requests
+
+**/warphere:** | Send a warp request to you to another player
 
 **Aliases:**
 
@@ -24,11 +36,23 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 
 /warpto | /wp
 
+/warpRequest | /wp
+
+/warpaccept | /wpa
+
+/warpremove | /wpr
+
+/warpno | /wpn
+
+/warplist | /wpl | For now is in testing
+
+/warphere | /wph
+
 ## New update
 
-**Switched to permission!**
+**Added new default messages**
 
-**Now you can use the permission to meanage the command**
+For now the permission are not implemented in the warpRequest classes.
 
 ## Permissions
 
@@ -39,6 +63,9 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 ## Installation
 Install the ultimate release and put in your plugin folder in your minecraft server
 and it will create all folders and files.
+
+**Make sure if you want the new default messages delete the old config and reload the plugin, 
+it will recreate the config**
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
