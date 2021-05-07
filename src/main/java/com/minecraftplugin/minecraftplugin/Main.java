@@ -7,9 +7,6 @@ import com.minecraftplugin.Utils.warpRequest.Executor.*;
 import com.minecraftplugin.data.data;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.logging.Logger;
-
-
 public final class Main extends JavaPlugin {
 
 //TODO add the reload config option
@@ -38,7 +35,7 @@ public final class Main extends JavaPlugin {
         this.getCommand("warplist").setExecutor(new warpList());
         this.getCommand("warpno").setExecutor(new warpNo());
         this.getCommand("warpremove").setExecutor(new warpRemove());
-        this.getCommand("easywarp").setExecutor(new EasyWarpUtils());
+        //this.getCommand("easywarp").setExecutor(new EasyWarpUtils());
         this.saveDefaultConfig();
         this.reloadConfig();
         data = new data();
