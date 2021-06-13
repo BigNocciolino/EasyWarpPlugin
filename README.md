@@ -6,16 +6,16 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 
 |   Commands  |                        Description                       | Alias |   Arguments   |
 |:-----------:|:--------------------------------------------------------:|:-----:|:-------------:|
-|    /warp    |       Teleport youreself to an existent warp point       |  /ww  |  <Warp name>  |
-|   /setwarp  |          Set a warp to the your current location         |  /stw |  <Warp name>  |
-|   /delwarp  |                  Delete an existent warp                 |  /dw  |  <Warp name>  |
+|    /warp    |       Teleport youreself to an existent warp point       |  /ww  |  Warp name  |
+|   /setwarp  |          Set a warp to the your current location         |  /stw |  Warp name  |
+|   /delwarp  |                  Delete an existent warp                 |  /dw  |  Warp name  |
 |    /warps   |               SHow a list of existent warp               |       |               |
-|   /warpto   | Send a reuqest of warp to the location of another player |  /wp  | <Player name> |
-| /warpaccept |               Accept a request of a player               |  /wpa | <Player name> |
-| /warpremove |                   Remove a made request                  |  /wpr | <Player name> |
-|   /warpno   |                     Decline a reuqest                    |  /wpn | <Player name> |
+|   /warpto   | Send a reuqest of warp to the location of another player |  /wp  | Player name |
+| /warpaccept |               Accept a request of a player               |  /wpa | Player name |
+| /warpremove |                   Remove a made request                  |  /wpr | Player name |
+|   /warpno   |                     Decline a reuqest                    |  /wpn | Player name |
 |   /warplit  |              Show a list of pending request              |  /wpl |               |
-|  /warphere  |   Send a request to the your location to anther player   |  /wph | <Player name> |
+|  /warphere  |   Send a request to the your location to anther player   |  /wph | Player name |
 
 ## New update
 
