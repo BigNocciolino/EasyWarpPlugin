@@ -4,49 +4,18 @@ Use this plugin to teleport yourself to certain points of the map and the world 
 
 ## Commands
 
-**/warp:** You can use this command to warp yourself. (The list of warp is stored in a yaml file in the EasyWarp folder)
-
-**/setwarp:** Performing this command you can set the warp with your courrent location and with the name you want. 
-
-**/delwarp:** Use this command to delete a warp
-
-**/warps:** Use this command to show the list of all warp
-
-**/warpto:** Use this command to warp yourself to another player
-
-**/warpRequest:** | Send a request to another player 
-
-**/warpaccept:** | Accept a pending request
-
-**/warpremove:** | Remove a request that you sent
-
-**/warpno:** | Decline a pending request
-
-**/warplist:** | Show a list of requests
-
-**/warphere:** | Send a warp request to you to another player
-
-**Aliases:**
-
-/delwarp | /dw
-
-/warp | /ww
-
-/setwarp | /stw
-
-/warpto | /wp
-
-/warpRequest | /wp
-
-/warpaccept | /wpa
-
-/warpremove | /wpr
-
-/warpno | /wpn
-
-/warplist | /wpl | For now is in testing
-
-/warphere | /wph
+|   Commands  |                        Description                       | Alias |   Arguments   |
+|:-----------:|:--------------------------------------------------------:|:-----:|:-------------:|
+|    /warp    |       Teleport youreself to an existent warp point       |  /ww  |  <Warp name>  |
+|   /setwarp  |          Set a warp to the your current location         |  /stw |  <Warp name>  |
+|   /delwarp  |                  Delete an existent warp                 |  /dw  |  <Warp name>  |
+|    /warps   |               SHow a list of existent warp               |       |               |
+|   /warpto   | Send a reuqest of warp to the location of another player |  /wp  | <Player name> |
+| /warpaccept |               Accept a request of a player               |  /wpa | <Player name> |
+| /warpremove |                   Remove a made request                  |  /wpr | <Player name> |
+|   /warpno   |                     Decline a reuqest                    |  /wpn | <Player name> |
+|   /warplit  |              Show a list of pending request              |  /wpl |               |
+|  /warphere  |   Send a request to the your location to anther player   |  /wph | <Player name> |
 
 ## New update
 
